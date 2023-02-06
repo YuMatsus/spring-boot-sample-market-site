@@ -1,0 +1,18 @@
+.header_nav{
+	display: flex;
+	list-style: none;
+	padding-left: 0;
+}
+.header_nav li{
+	margin-right: 30px;
+}
+.item_container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.item_unit {
+    list-style: none;
+    border: solid black;
+    border-width: 1px 0px;
+}

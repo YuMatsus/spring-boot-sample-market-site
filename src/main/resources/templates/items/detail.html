@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<h1>[[ ${title} ]]</h1>
+	<div th:if="!${item}">
+		<p>その商品はありません</p>
+	</div>
+	<div th:if="${item}">
+		<h2>商品名</h2>
+		<p>[[ ${item.name} ]]</p>
+		<h2>画像</h2>
+		<p><img class="item" th:src="@{/images/{image} (image=${item.image})}"></p>
+		<h2>カテゴリ</h2>
+		<p>[[ ${item.category.name} ]]</p>
+		<h2>価格</h2>
+		<p>[[ ${item.price} ]]円</p>
+		<h2>説明</h2>
+		<p>[[ ${item.description} ]]</p>
+		<form th:if="${item.onSale && item.user != loginUser}" th:action="@{/items/{id}/confirm (id=${item.id})}" method="get">
+			<button type="submit">購入する</button>
+		</form>
+	</div>
+</div>
+</html>

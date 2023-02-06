@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<h1>[[ ${title} ]]</h1>
+	<form th:action="@{/users/edit_image}" enctype="multipart/form-data" th:object="${userImageEditForm}" method="post">
+		<ul>
+			<li th:each="error : ${#fields.detailedErrors()}">
+				<span th:text="${error.message}"></span>
+			</li>
+		</ul>
+		<p><img class="user" th:src="@{/images/{image} (image=${loginUser.image})}"></p>
+		<p>
+			<label for="image">画像を選択: </label>
+			<input type="file" th:field="*{image}" autofocus="autofocus">
+		</p>
+		<p><input type="submit" value="更新"></p>	
+		</form>
+</div>
+</html>
